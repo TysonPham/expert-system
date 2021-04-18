@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
     require("connectDB.php");
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -38,5 +38,4 @@
     }  
     else{  
         echo "<h1> Login failed. Invalid username or password.</h1>";  
-    }     
-?>
+    }
