@@ -56,16 +56,29 @@ function convertTest($covid)
         <?php
         if($covid=="1"){?>
     
-            <form>
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <h3> Follow-up Form </h3> 
             <p>Please check all the list of Symptoms: </p>
 
-            <?php for($x = 1; $x < $symptomsCount; $x++){ ?>
-                <label> <?php echo mysqli_fetch_row($symptomsResult)[0] ?> </label>
-                <input type="checkbox"> <br/>
+            <?php for($x = 1; $x < $symptomsCount; $x++){ 
+                
+                $symptomName = mysqli_fetch_row($symptomsResult)[0]; 
+                
+                ?>
+                <label> <?php echo $symptomName;?> </label>
+                <input type="checkbox" name="fname[]" value= <?php echo $symptomName?>; > <br/>
+            
             <?php } ?>
 
+            <input type="submit" name="submit" value ="Submit Form" >
+            
+            <input type="text" name="text1" value ="Submit Form" >
+
         </form>
+
+        <?php if($_SERVER["REQUEST_METHOD"] == "POST") { 
+            $name = $_POST['fname[]']; 
+}       ?>
     
       <?php  } ?>
     
