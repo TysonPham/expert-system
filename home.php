@@ -16,9 +16,9 @@ $covid = $row["testResult"];
 
 function convertTest($covid)
 {
-    if ($covid === 1) {
+    if ($covid == 1) {
         return "Positive";
-    } else return "Negative";
+    } else {return "Negative";}
 }
 ?>
 
@@ -49,9 +49,20 @@ function convertTest($covid)
 
         echo "<p>Your test result is: " . convertTest($covid) . "</p>";
 
+        if($covid=="1"){
+            echo "<p>Follow-up Form 
+            <br>
+            Please check all the list of Symptoms:
+            <br>
+            
+            Any other symptoms, please fill in the box.
+            
 
+            
+            ";
+        }
         ?>
-
+      
 
     </div>
 </body>
