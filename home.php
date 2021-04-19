@@ -11,6 +11,10 @@ $medNum = $_SESSION['name'];
 $sql = "SELECT * FROM Diagnostic WHERE Med_num=$medNum";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$symptoms = "SHOW COLUMNS FROM Symptoms";
+$symptomsResult = mysqli_query($conn, $symptoms);
+$symptomsRow =  mysqli_fetch_array($symptomsResult, MYSQLI_ASSOC);
+$symptomsCount = mysqli_num_rows($symptomsResult);
 
 $covid = $row["testResult"];
 
@@ -44,24 +48,27 @@ function convertTest($covid)
         <h2>Home Page</h2>
         <p>Welcome back, <?= $_SESSION['name'] ?>!</p>
 
+        
+
+
+        <?php echo "<p>Your test result is: " . convertTest($covid) . "</p>"; ?>
+
         <?php
+        if($covid=="1"){?>
+    
+            <form>
+            <h3> Follow-up Form </h3> 
+            <p>Please check all the list of Symptoms: </p>
 
+            <?php for($x = 1; $x < $symptomsCount; $x++){ ?>
+                <label> <?php echo mysqli_fetch_row($symptomsResult)[0] ?> </label>
+                <input type="checkbox"> <br/>
+            <?php } ?>
 
-        echo "<p>Your test result is: " . convertTest($covid) . "</p>";
-
-        if($covid=="1"){
-            echo "<p>Follow-up Form 
-            <br>
-            Please check all the list of Symptoms:
-            <br>
-            
-            Any other symptoms, please fill in the box.
-            
-
-            
-            ";
-        }
-        ?>
+        </form>
+    
+      <?php  } ?>
+    
       
 
     </div>
