@@ -11,6 +11,23 @@ if(isset($_POST['submitGetUser'])){
 }
 //Add user not done
 else if(isset($_POST['submitAddUser'])){
+   $med = $_POST['addUserMednum'];
+   $fname = $_POST['addUserfirstname']; 
+   $lname = $_POST['addUserlastname'];
+   $dob = $_POST['addUserdob'];
+   $telephone = $_POST['addUsertelephone'];
+    $email = $_POST['addUseremail']; 
+   $province = $_POST['addUserprovince'];
+   $address = $_POST['addUseraddress'];
+   $first3chars = $_POST['addUserfirst3chars'];
+   $last3chars = $_POST['addUserlast3chars'];
+   $parent1 = $_POST['addUserfirstparentmed'];
+   $parent2 = $_POST['addUsersecondparentmed'];
+    
+    
+    
+    $sqlAddPerson = "INSERT INTO Person VALUES('')";
+
 
 }
 
@@ -43,20 +60,20 @@ else if(isset($_POST['submitAddUser'])){
 
             <h2>Add User</h2>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
-            <input type="text" name="addUserMednum" >
-            <input type="text" name="addUserfirstname">
-            <input type="text" name="addUserlastname" >
-            <input type="text" name="addUserdob" >
-            <input type="text" name="addUsertelephone">
-            <input type="text" name="addUseremail">
-            <input type="text" name="addUserprovince">
-            <input type="text" name="addUseraddress">
-            <input type="text" name="addUserfirst3chars">
-            <input type="text" name="addUserlast3chars">
-            <input type="text" name="addUsercitizen">
-            <input type="text" name="addUserfirstparentmed">
-            <input type="text" name="addUsersecondparentmed">
-            <input type="submit" name="submitAddUser">
+            <input type="text" name="addUserMednum" required>
+            <input type="text" name="addUserfirstname" required>
+            <input type="text" name="addUserlastname" required>
+            <input type="text" name="addUserdob" required>
+            <input type="text" name="addUsertelephone" required>
+            <input type="text" name="addUseremail" required>
+            <input type="text" name="addUserprovince" required>
+            <input type="text" name="addUseraddress" required>
+            <input type="text" name="addUserfirst3chars" required>
+            <input type="text" name="addUserlast3chars" required>
+            <input type="text" name="addUsercitizen" required>
+            <input type="text" name="addUserfirstparentmed" required>
+            <input type="text" name="addUsersecondparentmed" required>
+            <input type="submit" name="submitAddUser" required>
 
             </form>
 
